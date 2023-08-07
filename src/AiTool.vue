@@ -26,7 +26,6 @@ let dailyAiModel = {
   videoIframeAdress: "https://www.youtube.com/embed/QFhOGnykPZQ",
 };
 </script>
-
 <template>
   <div>
     <div class="content">
@@ -37,7 +36,6 @@ let dailyAiModel = {
             <img :src="dailyAiModel.imagePath" alt="" />
           </a>
         </div>
-
         <p>{{ dailyAiModel.date }}</p>
         <p>{{ dailyAiModel.description }}</p>
         <button>
@@ -54,7 +52,6 @@ let dailyAiModel = {
     </div>
   </div>
 </template>
-
 <style scoped lang="scss">
 .card {
   display: flex;
@@ -87,7 +84,6 @@ let dailyAiModel = {
     background-color: #63c6f4;
   }
 }
-
 .read-the-docs {
   color: #999999;
 }

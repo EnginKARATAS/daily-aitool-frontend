@@ -1,0 +1,29 @@
+{
+  "name": "daily-aitool",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vite-plugin-chrome-extension": "^0.0.7",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.4.5",
+    "@asigloo/prettier-config": "^0.2.0",
+    "@iconify/json": "^1.1.387",
+    "@vue/compiler-sfc": "^3.0.5",
+    "autoprefixer": "^10.3.1",
+    "postcss": "^8.3.6",
+    "tailwindcss": "^2.2.7",
+    "vite-plugin-chrome-extension": "^0.0.7",
+    "vite-plugin-components": "^0.13.2",
+    "vite-plugin-icons": "^0.6.5"
+  }
+  
+}
