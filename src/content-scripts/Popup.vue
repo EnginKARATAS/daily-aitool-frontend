@@ -1,8 +1,14 @@
- 
+<template>
+<  <div v-show="visible" class="ce-mask">
+      <div class="ce-popup">
+          <div class="ce-popup-content">
+              Hello, Vite-Plugin-Chrome-Extension
+          </div>
+      </div>
+  </div>>
+</template>
 
 <script>
-const { default: testVue } = require('./test.vue');
-
  
 </script>
 
