@@ -1,5 +1,5 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import AiTool from './components/AiTool.vue'
 </script>
 
 <template>
@@ -9,7 +9,7 @@ import HelloWorld from './components/HelloWorld.vue'
     <a href="https://vuejs.org/" target="_blank"> 
     </a>
   </div>
-  <HelloWorld msg="zaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
+  <AiTool msg="" />
 </template>
 
 <style scoped>
