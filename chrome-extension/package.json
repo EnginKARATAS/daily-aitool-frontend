@@ -1,9 +1,0 @@
-{
-  "private": true,
-  "scripts": {
-    "serve": "vue-cli-service build --mode development --watch"
-  },
-  "devDependencies": {
-    "vue-cli-plugin-browser-extension": "~0.25.2"
-  }
-}
