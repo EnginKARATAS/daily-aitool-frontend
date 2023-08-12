@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [vue()],
   //specify build path
   build: {
-    outDir: 'dist',
+    outDir: '../chrome-extension/public',
   },
 })
