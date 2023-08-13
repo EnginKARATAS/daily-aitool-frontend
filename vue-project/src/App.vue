@@ -1,18 +1,22 @@
 <script setup>
-import AiTool from './components/AiTool.vue'
+import AiTool from "./components/AiTool.vue";
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-    </a>
-    <a href="https://vuejs.org/" target="_blank"> 
-    </a>
+  <div id="app">
+    <AiTool msg="Welcome to Your Vue.js App" />
   </div>
-  <AiTool msg="" />
 </template>
 
 <style scoped>
+#app {
+  width: 600px;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #ffffff;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
