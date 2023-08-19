@@ -5,10 +5,18 @@ import ToolSection from "./components/ToolSection.vue";
 
 <template>
   <div id="app">
+    <div class="brainImageWrapper">
+      <div class="right">
+        <img src="./assets/brain256.png" alt="brain" />
+      </div>
+      <div class="left">
+        <img src="./assets/brain256.png" alt="brain" />
+      </div>
+    </div>
     <div class="header">
       <h1>SAD AI</h1>
       <div class="imageWrapper">
-        <img src="./assets/appLogo.png" alt="">
+        <img src="./assets/appLogo.png" alt="" />
       </div>
       <h3>AI TOOL DAILY</h3>
     </div>
@@ -20,27 +28,37 @@ import ToolSection from "./components/ToolSection.vue";
         </div>
       </div>
       <div class="content">
-        <ToolSection>
-          Data send
-        </ToolSection>
+        <ToolSection> Data send </ToolSection>
       </div>
     </div>
-     
   </div>
 </template>
 
 <style scoped lang="scss">
+#app {
+  .brainImageWrapper{
+    .right{
+      position: absolute;
+      right: -50px;
+      top: 0;
+    }
+    .left{
+      position: absolute;
+      left: -50px;
+      top: 0;
+    }
+  }
   .imageWrapper {
-    img{
+    img {
       width: 150px;
       height: 150px;
       border-radius: 50%;
-      border: 10px solid #F1C4ED;
+      border: 10px solid #f1c4ed;
     }
   }
-  
-  .content{
+  .content {
     margin: 20px;
-    background-color: #D3E5E5;
+    background-color: #d3e5e5;
   }
+}
 </style>
