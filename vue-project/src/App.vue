@@ -38,4 +38,9 @@ import ToolSection from "./components/ToolSection.vue";
       border: 10px solid #F1C4ED;
     }
   }
+  
+  .content{
+    margin: 20px;
+    background-color: #D3E5E5;
+  }
 </style>
