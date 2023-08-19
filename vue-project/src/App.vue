@@ -1,7 +1,26 @@
 <script setup>
-import AiTool from "./components/AiTool.vue";
 import ToolSection from "./components/ToolSection.vue";
-import Flama from "./components/Flama.vue";
+import { onMounted } from "vue";
+const axios = require("axios");
+
+const props = defineProps({
+  dailyAiTool: {
+    aiName: String,
+    aiWebsite: String,
+    date: String,
+    description: String,
+    id: Number,
+    imagePath: String,
+    videoIframeAdress: String,
+  },
+  dailyImage: {
+    imageName: String,
+    imagePath: String,
+    imageDescription: String,
+  },
+});
+
+
 </script>
 
 <template>
@@ -25,7 +44,8 @@ import Flama from "./components/Flama.vue";
     <div class="content-wrapper">
       <Flama />
       <div class="content">
-        <ToolSection> Data send </ToolSection>
+        <ToolSection v-slot="dailyAiTool"> Data send </ToolSection>
+        <ToolSection v-slot="dailyImage"> Data send </ToolSection>
       </div>
     </div>
   </div>
