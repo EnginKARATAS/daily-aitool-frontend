@@ -7,10 +7,10 @@ import ToolSection from "./components/ToolSection.vue";
   <div id="app">
     <div class="brainImageWrapper">
       <div class="right">
-        <img src="./assets/brain256.png" alt="brain" />
+        <img src="./assets/brain256.png" width="270" alt="brain" />
       </div>
       <div class="left">
-        <img src="./assets/brain256.png" alt="brain" />
+        <img src="./assets/brain256.png" width="270" alt="brain" />
       </div>
     </div>
     <div class="header">
@@ -54,6 +54,20 @@ import ToolSection from "./components/ToolSection.vue";
       height: 150px;
       border-radius: 50%;
       border: 10px solid #f1c4ed;
+    }
+  }
+  .header{
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1{
+      font-size: 50px;
+      color: #D3E5E5;
+    }
+    h3{
+      font-size: 30px;
+      color: #f1c4ed;
     }
   }
   .content {
