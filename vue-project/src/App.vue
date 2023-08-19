@@ -1,7 +1,7 @@
 <script setup>
 import ToolSection from "./components/ToolSection.vue";
 import { onMounted } from "vue";
-const axios = require("axios");
+import axios from "axios";
 
 const props = defineProps({
   dailyAiTool: {
@@ -13,14 +13,41 @@ const props = defineProps({
     imagePath: String,
     videoIframeAdress: String,
   },
-  dailyImage: {
+  dailyAiImage: {
     imageName: String,
     imagePath: String,
     imageDescription: String,
   },
 });
 
+onMounted(() => {
+  getDailyAiTool();
+  getDailyAiImage();
+});
 
+ const getDailyAiTool = async() =>  {
+  await axios
+    .get("https://2k2agenv28.execute-api.eu-north-1.amazonaws.com/items")
+    .then((fetched) => {
+      console.log(fetched.data[0]);
+      props.dailyAiTool = fetched.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+const getDailyAiImage = async () => {
+  await axios
+    .get("https://7wd4vnk343.execute-api.eu-north-1.amazonaws.com/")
+    .then((fetched) => {
+      console.log(fetched.data[0]);
+      props.dailyAiImage = fetched.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 </script>
 
 <template>
@@ -45,7 +72,7 @@ const props = defineProps({
       <Flama />
       <div class="content">
         <ToolSection v-slot="dailyAiTool"> Data send </ToolSection>
-        <ToolSection v-slot="dailyImage"> Data send </ToolSection>
+        <ToolSection v-slot="dailyAiImage"> Data send </ToolSection>
       </div>
     </div>
   </div>
