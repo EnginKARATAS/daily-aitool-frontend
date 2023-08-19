@@ -1,16 +1,17 @@
 <script setup>
 import AiTool from "./components/AiTool.vue";
 import ToolSection from "./components/ToolSection.vue";
+import Flama from "./components/Flama.vue";
 </script>
 
 <template>
   <div id="app">
     <div class="brainImageWrapper">
       <div class="right">
-        <img src="./assets/brain256.png" width="270" alt="brain" />
+        <img src="./assets/brain256.png" width="300" alt="brain" />
       </div>
       <div class="left">
-        <img src="./assets/brain256.png" width="270" alt="brain" />
+        <img src="./assets/brain256.png" width="300" alt="brain" />
       </div>
     </div>
     <div class="header">
@@ -20,13 +21,9 @@ import ToolSection from "./components/ToolSection.vue";
       </div>
       <h3>AI TOOL DAILY</h3>
     </div>
-    <div class="contentWrapper">
-      <div class="rightFlama">
-        <div class="flama">
-          <h3>AI TOOL TODAY</h3>
-          <h4>8.13.2023</h4>
-        </div>
-      </div>
+
+    <div class="content-wrapper">
+      <Flama />
       <div class="content">
         <ToolSection> Data send </ToolSection>
       </div>
@@ -36,16 +33,16 @@ import ToolSection from "./components/ToolSection.vue";
 
 <style scoped lang="scss">
 #app {
-  .brainImageWrapper{
-    .right{
+  .brainImageWrapper {
+    .right {
       position: absolute;
-      right: -50px;
-      top: 0;
+      right: -75px;
+      top: -50px;
     }
-    .left{
+    .left {
       position: absolute;
-      left: -50px;
-      top: 0;
+      left: -75px;
+      top: -50px;
     }
   }
   .imageWrapper {
@@ -56,23 +53,29 @@ import ToolSection from "./components/ToolSection.vue";
       border: 10px solid #f1c4ed;
     }
   }
-  .header{
+  .header {
     padding-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    h1{
+    h1 {
+      margin-bottom: 10px;
       font-size: 50px;
-      color: #D3E5E5;
+      color: #d3e5e5;
     }
-    h3{
+    h3 {
+      margin-top: 0;
       font-size: 30px;
       color: #f1c4ed;
     }
   }
-  .content {
-    margin: 20px;
-    background-color: #d3e5e5;
+  .content-wrapper {
+    position: relative;
+
+    .content {
+      margin: 20px;
+      background-color: #d3e5e5;
+    }
   }
 }
 </style>
