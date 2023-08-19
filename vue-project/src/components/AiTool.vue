@@ -13,7 +13,7 @@ onMounted(() => {
       console.log(error);
     });
 });
-defineProps<{ msg: string }>();
+defineProps<{ msg }>();
 let dailyAiModel = {
   aiName: "Piggy Magic",
   aiWebsite: "https://piggy.to/magic",
@@ -33,7 +33,7 @@ let dailyAiModel = {
         <h1>{{ dailyAiModel.aiName }}</h1>
         <div class="image">
           <a :href="dailyAiModel.aiWebsite">
-            <img :src="dailyAiModel.imagePath" alt="" />
+            <img class="logo" :src="dailyAiModel.imagePath" alt="" />
           </a>
         </div>
         <p>{{ dailyAiModel.date }}</p>
@@ -42,49 +42,16 @@ let dailyAiModel = {
           <link rel="stylesheet" :href="dailyAiModel.aiWebsite" />Visit
         </button>
         <br />
-        <div class="iframe">
+        <div class="iframe-youtube">
           <iframe
             :src="dailyAiModel.videoIframeAdress"
             frameborder="0"
           ></iframe>
         </div>
+        <div class="iframe-tiktok"></div>
       </div>
     </div>
   </div>
 </template>
 <style scoped lang="scss">
-.card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #63c6f4;
-  .image {
-    width: 100%;
-    height: 100%;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-  .iframe {
-    padding-top: 1em;
-    width: 100%;
-    height: 100%;
-    iframe {
-      width: 100%;
-      height: 100%;
-    }
-  }
-  width: 30%;
-  > * {
-    padding: 0.2em;
-  }
-  button {
-    background-color: #63c6f4;
-  }
-}
-.read-the-docs {
-  color: #999999;
-}
 </style>
