@@ -42,6 +42,7 @@ let dailyAiModel = {
           <link rel="stylesheet" :href="dailyAiModel.aiWebsite" />Visit
         </button>
         <br />
+        <h2>{{ dailyAiModel.aiName }} Trailer</h2>
         <div class="iframe-youtube">
           <iframe
             :src="dailyAiModel.videoIframeAdress"

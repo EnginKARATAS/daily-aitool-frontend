@@ -1,8 +1,8 @@
 <template>
-    <div class="flama">
-      <h3>AI TOOL TODAY</h3>
-      <h4>{{ date }}</h4>
-    </div>
+  <div class="flama">
+    <h3>AI TOOL TODAY</h3>
+    <h4>{{ date }}</h4>
+  </div>
 </template>
 
 <script setup>

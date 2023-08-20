@@ -1,15 +1,18 @@
 <script setup>
-import { defineComponent, onMounted, ref } from "vue";
+import { defineComponent, onMounted, reactive, ref } from "vue";
 import axios from "axios";
 //async comp call ToolSection
 import ToolSection from "./components/ToolSection.vue";
 import Flama from "./components/Flama.vue";
 import DotLoader from "vue-spinner/src/DotLoader.vue";
+// import LogRocket from 'logrocket';
+// LogRocket.init('zwclzf/dailyaitool');
+
 const logoSpinnerColor = "#f1c4ed";
 const logoSpinnerSize = "120px";
 
 let loading = ref(true);
-const props = defineProps({
+const props = reactive({
   dailyAiTool: {
     aiName: String,
     aiWebsite: String,
@@ -19,11 +22,7 @@ const props = defineProps({
     imagePath: String,
     videoIframeAdress: String,
   },
-  dailyAiImage: {
-    imageName: String,
-    imagePath: String,
-    imageDescription: String,
-  },
+  dailyAiImage: "testetsetset"
 });
 
 onMounted(() => {
@@ -36,7 +35,6 @@ const getDailyAiTool = async () => {
   await axios
     .get("https://2k2agenv28.execute-api.eu-north-1.amazonaws.com/items")
     .then((fetched) => {
-      console.log("✨✨✨", fetched.data[0].imagePath);
       props.dailyAiTool = fetched.data[0];
       loading = false;
     })
@@ -44,14 +42,16 @@ const getDailyAiTool = async () => {
       loading = false;
       console.log(error);
     });
-    loading = true;
+  loading = true;
 };
 
 const getDailyAiImage = async () => {
   await axios
     .get("https://7wd4vnk343.execute-api.eu-north-1.amazonaws.com/")
     .then((fetched) => {
-      props.dailyAiImage = fetched.data[0];
+      console.log("✨✨✨", fetched.data);
+      props.dailyAiImage = fetched.data;
+      console.log("🤷‍♀️🤷‍♀️",props.dailyAiImage);
     })
     .catch((error) => {
       console.log(error);
@@ -89,13 +89,10 @@ const getDailyAiImage = async () => {
         <Flama />
       </div>
       <div class="tool-sections">
-        <!-- <dot-loader
-          class="logoSpinner"
-          :loading="loading"
-          :color="logoSpinnerColor"
-          :size="logoSpinnerSize"
-        ></dot-loader> -->
-        <ToolSection :modelValue="props.dailyAiTool"> Data send </ToolSection>
+        <ToolSection :modelValue="props.dailyAiTool" />
+      </div>
+      <div class="tool-sections">
+        <ToolSection :dailyAiImage="props.dailyAiImage" />
       </div>
     </div>
   </div>
@@ -159,7 +156,9 @@ const getDailyAiImage = async () => {
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
       display: flex;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
       margin: 20px;
       background-color: #d3e5e5;
     }
