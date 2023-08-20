@@ -11,7 +11,8 @@ import DotLoader from "vue-spinner/src/DotLoader.vue";
 const logoSpinnerColor = "#f1c4ed";
 const logoSpinnerSize = "120px";
 
-let loading = ref(true);
+let loadingTodayAiToolSection = ref(true);
+let loadingTodayImageSection = ref(true);
 const props = reactive({
   dailyAiTool: {
     aiName: String,
@@ -26,7 +27,8 @@ const props = reactive({
 });
 
 onMounted(() => {
-  loading = true;
+  loadingTodayAiToolSection = true;
+  loadingTodayImageSection = true;
   getDailyAiTool();
   getDailyAiImage();
 });
@@ -36,26 +38,27 @@ const getDailyAiTool = async () => {
     .get("https://2k2agenv28.execute-api.eu-north-1.amazonaws.com/items")
     .then((fetched) => {
       props.dailyAiTool = fetched.data[0];
-      loading = false;
+      loadingTodayAiToolSection = false;
     })
     .catch((error) => {
-      loading = false;
+      loadingTodayAiToolSection = false;
       console.log(error);
     });
-  loading = true;
+    loadingTodayAiToolSection = true;
 };
 
 const getDailyAiImage = async () => {
   await axios
     .get("https://7wd4vnk343.execute-api.eu-north-1.amazonaws.com/")
     .then((fetched) => {
-      console.log("✨✨✨", fetched.data);
+      loadingTodayImageSection = false;
       props.dailyAiImage = fetched.data;
-      console.log("🤷‍♀️🤷‍♀️",props.dailyAiImage);
     })
     .catch((error) => {
+      loadingTodayImageSection = false;
       console.log(error);
     });
+    loadingTodayImageSection = true;
 };
 </script>
 
@@ -76,7 +79,7 @@ const getDailyAiImage = async () => {
 
         <dot-loader
           class="logoSpinner"
-          :loading="loading"
+          :loading="loadingTodayAiToolSection && loadingTodayImageSection"
           :color="logoSpinnerColor"
           :size="logoSpinnerSize"
         ></dot-loader>
