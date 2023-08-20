@@ -10,12 +10,12 @@
     "128": "images/icon-128.png"
   },
   "action": {
-    "default_popup": "popup/index.html"
+    "default_popup": "index.html"
   },
   "content_scripts": [
     {
-      "js": ["popup/assets/main-7f02517c.js"],
-      "css": ["popup/assets/index-84aedd9f.css"],
+      "js": ["assets/index.js"],
+      "css": ["assets/index.css"],
       "matches": [
         "https://developer.chrome.com/docs/extensions/*",
         "https://developer.chrome.com/docs/webstore/*"
