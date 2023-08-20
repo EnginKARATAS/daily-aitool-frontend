@@ -1,7 +1,9 @@
 <script setup>
-import ToolSection from "./components/ToolSection.vue";
 import { onMounted } from "vue";
 import axios from "axios";
+//async comp call ToolSection
+import ToolSection from "./components/ToolSection.vue";
+
 
 const props = defineProps({
   dailyAiTool: {
@@ -71,8 +73,8 @@ const getDailyAiImage = async () => {
     <div class="content-wrapper">
       <Flama />
       <div class="content">
-        <ToolSection v-slot="dailyAiTool"> Data send </ToolSection>
-        <ToolSection v-slot="dailyAiImage"> Data send </ToolSection>
+        <ToolSection :modelValue="props.dailyAiTool" > Data send </ToolSection>
+        <ToolSection :modelValue="props.dailyAiImage"> Data send </ToolSection>
       </div>
     </div>
   </div>
