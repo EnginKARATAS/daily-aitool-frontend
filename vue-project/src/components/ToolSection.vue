@@ -1,9 +1,4 @@
 <template>
-  <div class="card" v-if="dailyAiImage">
-    <h1>Today`s amazing image</h1>
-    <p>SadAi thinked this result entire day!</p>
-    <img :src="dailyAiImage" alt="" />
-  </div>
   <div class="card" v-if="modelValue">
     <h1>{{ modelValue.aiName }}</h1>
     <div class="image">
@@ -20,10 +15,15 @@
     <p>{{ modelValue.description }}</p>
     <button><link rel="stylesheet" :href="modelValue.aiWebsite" />Visit</button>
     <br />
-    <h1>{{ modelValue.aiName }} Traile</h1>
+    <h1>{{ modelValue.aiName }} Trailer</h1>
     <div class="iframe-youtube">
       <iframe :src="modelValue.videoIframeAdress" frameborder="0"></iframe>
     </div>
+  </div>
+  <div class="card" v-if="dailyAiImage">
+    <h1>Today`s Beautiful AI Image</h1>
+    <p class="image-section-p">SadAi thought result entire day!</p>
+    <img :src="dailyAiImage" alt="" />
   </div>
 </template>
 
@@ -44,10 +44,15 @@ const props = defineProps(["modelValue", "dailyAiImage"]);
   position: relative;
   color: black;
   margin-bottom: 2.3em;
-
+  .image-section-p {
+    margin-top: -1.2em;
+    margin-bottom: .5em;
+  }
   p {
     text-align: justify;
     font-size: 1.5em;
+    margin: 0;
+    padding: 0;
   }
   .image {
     width: 100%;
