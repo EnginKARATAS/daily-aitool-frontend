@@ -1,10 +1,14 @@
 <script setup>
-import { onMounted } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import axios from "axios";
 //async comp call ToolSection
 import ToolSection from "./components/ToolSection.vue";
+import Flama from "./components/Flama.vue";
+import DotLoader from "vue-spinner/src/DotLoader.vue";
+const logoSpinnerColor = "#f1c4ed";
+const logoSpinnerSize = "120px";
 
-
+let loading = ref(true);
 const props = defineProps({
   dailyAiTool: {
     aiName: String,
@@ -23,28 +27,31 @@ const props = defineProps({
 });
 
 onMounted(() => {
+  loading = true;
   getDailyAiTool();
   getDailyAiImage();
 });
 
- const getDailyAiTool = async() =>  {
+const getDailyAiTool = async () => {
   await axios
     .get("https://2k2agenv28.execute-api.eu-north-1.amazonaws.com/items")
     .then((fetched) => {
-      console.log(fetched.data[0]);
-      props.dailyAiTool = fetched.data;
+      console.log("✨✨✨", fetched.data[0].imagePath);
+      props.dailyAiTool = fetched.data[0];
+      loading = false;
     })
     .catch((error) => {
+      loading = false;
       console.log(error);
     });
+    loading = true;
 };
 
 const getDailyAiImage = async () => {
   await axios
     .get("https://7wd4vnk343.execute-api.eu-north-1.amazonaws.com/")
     .then((fetched) => {
-      console.log(fetched.data[0]);
-      props.dailyAiImage = fetched.data;
+      props.dailyAiImage = fetched.data[0];
     })
     .catch((error) => {
       console.log(error);
@@ -66,15 +73,29 @@ const getDailyAiImage = async () => {
       <h1>SAD AI</h1>
       <div class="imageWrapper">
         <img src="./assets/appLogo.png" alt="" />
+
+        <dot-loader
+          class="logoSpinner"
+          :loading="loading"
+          :color="logoSpinnerColor"
+          :size="logoSpinnerSize"
+        ></dot-loader>
       </div>
       <h3>AI TOOL DAILY</h3>
     </div>
 
-    <div class="content-wrapper">
-      <Flama />
-      <div class="content">
-        <ToolSection :modelValue="props.dailyAiTool" > Data send </ToolSection>
-        <ToolSection :modelValue="props.dailyAiImage"> Data send </ToolSection>
+    <div class="tool-sections-wrapper">
+      <div class="flama-wrapper">
+        <Flama />
+      </div>
+      <div class="tool-sections">
+        <!-- <dot-loader
+          class="logoSpinner"
+          :loading="loading"
+          :color="logoSpinnerColor"
+          :size="logoSpinnerSize"
+        ></dot-loader> -->
+        <ToolSection :modelValue="props.dailyAiTool"> Data send </ToolSection>
       </div>
     </div>
   </div>
@@ -95,6 +116,12 @@ const getDailyAiImage = async () => {
     }
   }
   .imageWrapper {
+    position: relative;
+    .logoSpinner {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+    }
     img {
       width: 150px;
       height: 150px;
@@ -118,10 +145,21 @@ const getDailyAiImage = async () => {
       color: #f1c4ed;
     }
   }
-  .content-wrapper {
-    position: relative;
-
-    .content {
+  .tool-sections-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    .flama-wrapper {
+      display: flex;
+      justify-content: right;
+      margin-bottom: -40px;
+      margin-right: 20px;
+    }
+    .tool-sections {
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+      display: flex;
+      justify-content: center;
       margin: 20px;
       background-color: #d3e5e5;
     }
