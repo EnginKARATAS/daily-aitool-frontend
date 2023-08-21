@@ -13,17 +13,9 @@ const logoSpinnerSize = "120px";
 
 let loadingTodayAiToolSection = ref(true);
 let loadingTodayImageSection = ref(true);
-const props = reactive({
-  dailyAiTool: {
-    aiName: String,
-    aiWebsite: String,
-    date: String,
-    description: String,
-    id: Number,
-    imagePath: String,
-    videoIframeAdress: String,
-  },
-  dailyAiImage: "testetsetset"
+const contentData = reactive({
+  dailyAiTool: null,
+  dailyAiImage: null,
 });
 
 onMounted(() => {
@@ -37,14 +29,14 @@ const getDailyAiTool = async () => {
   await axios
     .get("https://2k2agenv28.execute-api.eu-north-1.amazonaws.com/items")
     .then((fetched) => {
-      props.dailyAiTool = fetched.data[0];
+      contentData.dailyAiTool = fetched.data[0];
       loadingTodayAiToolSection = false;
     })
     .catch((error) => {
       loadingTodayAiToolSection = false;
       console.log(error);
     });
-    loadingTodayAiToolSection = true;
+  loadingTodayAiToolSection = true;
 };
 
 const getDailyAiImage = async () => {
@@ -52,13 +44,13 @@ const getDailyAiImage = async () => {
     .get("https://7wd4vnk343.execute-api.eu-north-1.amazonaws.com/")
     .then((fetched) => {
       loadingTodayImageSection = false;
-      props.dailyAiImage = fetched.data;
+      contentData.dailyAiImage = fetched.data;
     })
     .catch((error) => {
       loadingTodayImageSection = false;
       console.log(error);
     });
-    loadingTodayImageSection = true;
+  loadingTodayImageSection = true;
 };
 </script>
 
@@ -92,10 +84,10 @@ const getDailyAiImage = async () => {
         <Flama />
       </div>
       <div class="tool-sections">
-        <ToolSection :modelValue="props.dailyAiTool" />
+        <ToolSection :modelValue="contentData.dailyAiTool" />
       </div>
       <div class="tool-sections">
-        <ToolSection :dailyAiImage="props.dailyAiImage" />
+        <ToolSection :dailyAiImage="contentData.dailyAiImage" />
       </div>
     </div>
   </div>

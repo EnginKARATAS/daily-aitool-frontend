@@ -1,4 +1,5 @@
 <template>
+
   <div class="card" v-if="modelValue">
     <h1>{{ modelValue.aiName }}</h1>
     <div class="image">
@@ -13,8 +14,9 @@
     </div>
 
     <p>{{ modelValue.description }}</p>
-    <button><link rel="stylesheet" :href="modelValue.aiWebsite" />Visit</button>
-    <br />
+    <a :href="modelValue.aiWebsite">
+      <button>Visit</button>
+    </a>
     <h1>{{ modelValue.aiName }} Trailer</h1>
     <div class="iframe-youtube">
       <iframe :src="modelValue.videoIframeAdress" frameborder="0"></iframe>
@@ -28,8 +30,12 @@
 </template>
 
 <script setup>
+import DotLoader from "vue-spinner/src/DotLoader.vue";
 import { defineProps } from "vue";
-const props = defineProps(["modelValue", "dailyAiImage"]);
+const props = defineProps({
+  modelValue: null,
+  dailyAiImage: null,
+});
 </script>
 
 <style scoped lang="scss">
@@ -46,7 +52,7 @@ const props = defineProps(["modelValue", "dailyAiImage"]);
   margin-bottom: 2.3em;
   .image-section-p {
     margin-top: -1.2em;
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
   }
   p {
     text-align: justify;
@@ -72,7 +78,11 @@ const props = defineProps(["modelValue", "dailyAiImage"]);
     }
   }
 
-  button {
+  a {
+    margin-top: 2em;
+    width: 100%;
+  }
+  a button {
     color: black;
     background-color: #f1c4ed;
     width: 100%;
