@@ -43,6 +43,9 @@
         <ToolSection :dailyAiImage="contentData.dailyAiImage" />
       </div>
     </div>
+    <div class="footer">
+      <a target="_blank" href="http://www.enginkaratas.com">www.enginkaratas.com</a>
+    </div>
   </div>
 </template>
 
@@ -50,9 +53,9 @@
 import { computed, defineComponent, onMounted, reactive, ref } from "vue";
 import axios from "axios";
 //async comp call ToolSection
-import ToolSection from "./components/ToolSection.vue";
 import Flama from "./components/Flama.vue";
 import DotLoader from "vue-spinner/src/DotLoader.vue";
+import ToolSection from "./components/toolsection.vue";
 // import LogRocket from 'logrocket';
 // LogRocket.init('zwclzf/dailyaitool');
 
@@ -170,7 +173,7 @@ const getDailyAiImage = async () => {
     }
   }
   .header {
-    p{
+    p {
       margin-bottom: 1em;
       opacity: 0.8;
       font-style: italic;
@@ -231,6 +234,17 @@ const getDailyAiImage = async () => {
       align-items: center;
       margin: 20px;
       background-color: #d3e5e5;
+    }
+  }
+  .footer {
+    margin: -20px;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    font-size: 1em;
+    opacity: 0.8;
+    a {
+      color: #000000;
     }
   }
 }
