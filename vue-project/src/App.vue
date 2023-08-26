@@ -1,72 +1,73 @@
 <template>
-  <div id="app">
-    <div class="brainImageWrapper">
-      <div class="right">
-        <img src="./assets/brain256.png" width="300" alt="brain" />
-      </div>
-      <div class="left">
-        <img src="./assets/brain256.png" width="300" alt="brain" />
-      </div>
-    </div>
-    <div class="header">
-      <h1>SADAI</h1>
-      <p class="entranceSentence">Silence`s AI companion</p>
-
-
-      <div
-        class="imageWrapper"
-        @mouseover="sadaiImagePopupShow"
-        @mouseleave="sadaiImagePopupClose"
-      >
-        <dot-loader
-          v-if="changePopupState"
-          class="logoSpinner"
-          :loading="loadingTodayAiToolSection && loadingTodayImageSection"
-          :color="logoSpinnerColor"
-          :size="logoSpinnerSize"
-        ></dot-loader>
-        <div class="imgOverlay" v-if="changePopupState">
-          <p>{{ getTodaySadMessage() }}</p>
+  <Transition>
+    <div id="app" :class="getThemeClass">
+      <div class="brainImageWrapper">
+        <div class="right">
+          <img src="./assets/brain256.png" width="300" alt="brain" />
         </div>
-        <img src="./assets/appLogo.png" alt="" />
+        <div class="left">
+          <img src="./assets/brain256.png" width="300" alt="brain" />
+        </div>
       </div>
-      <h3>AI TOOL DAILY</h3>
-    </div>
+      <div class="header">
+        <h1>SADAI</h1>
+        <p class="entranceSentence">Silence`s AI companion</p>
+        <div class="theme-switcher">
+          <theme-switcher @getColorScheme="setColorScheme"></theme-switcher>
+        </div>
+        <div
+          class="imageWrapper"
+          @mouseover="sadaiImagePopupShow"
+          @mouseleave="sadaiImagePopupClose"
+        >
+          <dot-loader
+            v-if="changePopupState"
+            class="logoSpinner"
+            :loading="loadingTodayAiToolSection && loadingTodayImageSection"
+            :color="logoSpinnerColor"
+            :size="logoSpinnerSize"
+          ></dot-loader>
+          <div class="imgOverlay" v-if="changePopupState">
+            <p>{{ getTodaySadMessage() }}</p>
+          </div>
+          <img src="./assets/appLogo.png" alt="" />
+        </div>
+        <h3>AI TOOL DAILY</h3>
+      </div>
 
-    <div class="tool-sections-wrapper">
-      <div class="flama-wrapper">
-        <Flama />
+      <div class="tool-sections-wrapper">
+        <div class="flama-wrapper">
+          <Flama />
+        </div>
+        <div class="tool-sections" :class="getThemeClass">
+          <ToolSection :modelValue="contentData.dailyAiTool" />
+        </div>
+        <div class="tool-sections" :class="getThemeClass">
+          <ToolSection :dailyAiImage="contentData.dailyAiImage" />
+        </div>
       </div>
-      <div class="tool-sections">
-        <ToolSection :modelValue="contentData.dailyAiTool" />
-      </div>
-      <div class="tool-sections">
-        <ToolSection :dailyAiImage="contentData.dailyAiImage" />
+      <div class="footer">
+        <a target="_blank" href="http://www.enginkaratas.com"
+          >www.enginkaratas.com</a
+        >
       </div>
     </div>
-    <div class="footer">
-      <a target="_blank" href="http://www.enginkaratas.com"
-        >www.enginkaratas.com</a
-      >
-    </div>
-  </div>
+  </Transition>
 </template>
 
 <script setup>
 import ToolSection from "./components/toolsection.vue";
 import { computed, defineComponent, onMounted, reactive, ref } from "vue";
 import axios from "axios";
-//async comp call ToolSection
 import Flama from "./components/Flama.vue";
 import DotLoader from "vue-spinner/src/DotLoader.vue";
-// import LogRocket from 'logrocket';
-// LogRocket.init('zwclzf/dailyaitool');
+import ThemeSwitcher from "./components/ThemeSwitcher.vue";
 
 const logoSpinnerColor = "#f1c4ed";
 const logoSpinnerSize = "120px";
+let themeColor = ref("light");
 let loadingTodayAiToolSection = ref(true);
 let loadingTodayImageSection = ref(true);
-let isThemeLight = ref(true);
 const contentData = reactive({
   dailyAiTool: null,
   dailyAiImage: null,
@@ -78,15 +79,27 @@ onMounted(() => {
   getDailyAiTool();
   getDailyAiImage();
 });
+const getThemeClass = computed(() => {
+  return themeColor.value == "dark" ? "dark" : "light";
+});
+const setColorScheme = (colorScheme) => {
+  themeColor.value = colorScheme;
+};
 
+const isThemeLight = computed(() => {
+  return isThemeLight.value;
+});
+
+// let isThemeLight = ref(true);
+const getThemeColor = computed(() => {
+  return themeColor.value;
+});
 const changePopupState = computed(() => {
-  console.log(popupShowState.value);
   return popupShowState.value;
 });
 const changeThemeState = computed(() => {
   return isThemeLight.value;
 });
-
 
 const getTodaySadMessage = () => {
   const sadMessages = [
@@ -115,11 +128,9 @@ const getTodaySadMessage = () => {
 };
 
 const sadaiImagePopupShow = () => {
-  console.log("object");
   popupShowState.value = true;
 };
 const sadaiImagePopupClose = () => {
-  console.log("deobject");
   popupShowState.value = false;
 };
 
@@ -132,7 +143,6 @@ const getDailyAiTool = async () => {
     })
     .catch((error) => {
       loadingTodayAiToolSection = false;
-      console.log(error);
     });
   loadingTodayAiToolSection = true;
 };
@@ -146,13 +156,21 @@ const getDailyAiImage = async () => {
     })
     .catch((error) => {
       loadingTodayImageSection = false;
-      console.log(error);
     });
   loadingTodayImageSection = true;
 };
 </script>
 
 <style scoped lang="scss">
+.v-enter-active,
+.v-leave-active {
+  transition: color 0.5s white;
+}
+
+.v-enter-from,
+.v-leave-to {
+  color: red;
+}
 #app {
   .brainImageWrapper {
     .right {
@@ -223,6 +241,7 @@ const getDailyAiImage = async () => {
     z-index: 1;
     opacity: 0.8;
   }
+
   .tool-sections-wrapper {
     display: flex;
     flex-direction: column;
@@ -233,18 +252,25 @@ const getDailyAiImage = async () => {
       margin-bottom: -40px;
       margin-right: 20px;
     }
-
   }
+
   .tool-sections {
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin: 20px;
-      background-color: #d3e5e5;
-    }
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+  }
+
+  .tool-sections.dark {
+    background-color: #8ba2a2;
+  }
+
+  .tool-sections.light {
+    background-color: #d3e5e5;
+  }
   .footer {
     margin: -20px;
     padding: 1em;
@@ -256,5 +282,11 @@ const getDailyAiImage = async () => {
       color: #000000;
     }
   }
+}
+#app .dark {
+  background-color: #000000;
+}
+#app .light {
+  background-color: #a1bbca;
 }
 </style>
