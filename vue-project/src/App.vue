@@ -10,7 +10,8 @@
     </div>
     <div class="header">
       <h1>SADAI</h1>
-      <p>Silence's companion</p>
+      <p class="entranceSentence">Silence`s AI companion</p>
+
 
       <div
         class="imageWrapper"
@@ -44,18 +45,20 @@
       </div>
     </div>
     <div class="footer">
-      <a target="_blank" href="http://www.enginkaratas.com">www.enginkaratas.com</a>
+      <a target="_blank" href="http://www.enginkaratas.com"
+        >www.enginkaratas.com</a
+      >
     </div>
   </div>
 </template>
 
 <script setup>
+import ToolSection from "./components/toolsection.vue";
 import { computed, defineComponent, onMounted, reactive, ref } from "vue";
 import axios from "axios";
 //async comp call ToolSection
 import Flama from "./components/Flama.vue";
 import DotLoader from "vue-spinner/src/DotLoader.vue";
-import ToolSection from "./components/toolsection.vue";
 // import LogRocket from 'logrocket';
 // LogRocket.init('zwclzf/dailyaitool');
 
@@ -63,6 +66,7 @@ const logoSpinnerColor = "#f1c4ed";
 const logoSpinnerSize = "120px";
 let loadingTodayAiToolSection = ref(true);
 let loadingTodayImageSection = ref(true);
+let isThemeLight = ref(true);
 const contentData = reactive({
   dailyAiTool: null,
   dailyAiImage: null,
@@ -79,6 +83,10 @@ const changePopupState = computed(() => {
   console.log(popupShowState.value);
   return popupShowState.value;
 });
+const changeThemeState = computed(() => {
+  return isThemeLight.value;
+});
+
 
 const getTodaySadMessage = () => {
   const sadMessages = [
@@ -225,7 +233,9 @@ const getDailyAiImage = async () => {
       margin-bottom: -40px;
       margin-right: 20px;
     }
-    .tool-sections {
+
+  }
+  .tool-sections {
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
       display: flex;
@@ -235,7 +245,6 @@ const getDailyAiImage = async () => {
       margin: 20px;
       background-color: #d3e5e5;
     }
-  }
   .footer {
     margin: -20px;
     padding: 1em;

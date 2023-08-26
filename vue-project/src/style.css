@@ -4,7 +4,6 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
   background-color: #a1bbca;
 
   font-synthesis: none;
@@ -13,34 +12,20 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-
 a {
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  color: #000000;
 }
 
 body {
   margin: 0;
   min-width: 320px;
-  height: 2000px;
-  overflow-y: scroll;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2.8em;
   line-height: 1.1;
 }
 
@@ -50,29 +35,43 @@ button {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #000000;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
 #app {
   max-width: 1280px;
   width: 600px;
   margin: 0 auto;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #322e2e;
+  }
+  body{
+    background-color: #000000;
+  }
+  .entranceSentence {
+    color: #ffffff;
+  }
+  .tool-sections {
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(118, 117, 117, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    background-color: #96b1b1;
   }
   a:hover {
     color: #d3e5e5;

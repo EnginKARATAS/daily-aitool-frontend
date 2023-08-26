@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "ChangeMyLifeAI - AI Tools Daily",
-  "description": "Every day you will get a new AI tool suggestion to help you in your life.",
+  "name": "SADAI - AI tools daily showcase & newsletter",
+  "description": "Every day you will get a new AI tool suggestion to catch up AI trends and benefits.",
   "version": "1.0",
   "icons": {
     "16": "images/icon-16.png",
@@ -9,8 +9,7 @@
     "48": "images/icon-48.png",
     "128": "images/icon-128.png"
   },
-  "host_permissions": [
-    "https://*.amazonaws.com/*"],
+  "host_permissions": ["https://*.amazonaws.com/*"],
   "action": {
     "default_popup": "index.html"
   },
