@@ -2,7 +2,7 @@
   <div class="card" v-if="modelValue">
     <h1>{{ modelValue.aiName }}</h1>
     <div class="image">
-      <a :href="modelValue.aiWebsite">
+      <a target="_blank" :href="modelValue.aiWebsite">
         <img
           imagePath
           class="logo"
@@ -13,7 +13,7 @@
     </div>
 
     <p>{{ modelValue.description }}</p>
-    <a :href="modelValue.aiWebsite">
+    <a target="_blank" :href="modelValue.aiWebsite">
       <button>Visit</button>
     </a>
     <h1>{{ modelValue.aiName }} Trailer</h1>
