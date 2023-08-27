@@ -2,7 +2,8 @@
   font-family: "Merienda", Helvetica, Arial;
   line-height: 1.5;
   font-weight: 400;
-   color-scheme: light dark;
+  color-scheme: light dark;
+  height: 600px;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -17,9 +18,9 @@ a:hover {
 }
 
 body {
+  height: 600px;
   margin: 0;
   min-width: 320px;
- 
 }
 
 h1 {
@@ -40,19 +41,15 @@ button {
 button:hover {
   border-color: #000000;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+ 
 #app {
   max-width: 1280px;
   width: 600px;
-  height: 100vh;
+  height: 600px;
   margin: 0 auto;
 }
 
 @media (prefers-color-scheme: dark) {
-
   .entranceSentence {
     color: #ffffff;
   }

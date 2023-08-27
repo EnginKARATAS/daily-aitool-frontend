@@ -39,12 +39,15 @@
         <div class="flama-wrapper">
           <Flama />
         </div>
-        <div class="tool-sections" :class="getThemeClass">
+        <div class="tool-sections" v-if="contentData.dailyAiTool" :class="getThemeClass">
           <ToolSection :modelValue="contentData.dailyAiTool" />
         </div>
-        <div class="tool-sections" :class="getThemeClass">
+        <div class="tool-sections" v-else><h3 style="color:black">No AI tool suggestion today:(</h3></div>
+        
+        <div class="tool-sections" v-if="contentData.dailyAiImage" :class="getThemeClass">
           <ToolSection :dailyAiImage="contentData.dailyAiImage" />
         </div>
+        <div class="tool-sections" v-else><h3 style="color:black">No AI tool suggestion today:(</h3></div>
       </div>
       <div class="footer">
         <a target="_blank" href="http://www.enginkaratas.com"
