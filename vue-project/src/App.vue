@@ -1,5 +1,4 @@
 <template>
-  <Transition>
     <div id="app" :class="getThemeClass">
       <div class="brainImageWrapper">
         <div class="right">
@@ -35,19 +34,33 @@
         <h3>AI TOOL DAILY</h3>
       </div>
 
-      <div class="tool-sections-wrapper">
+      <div class="tool-sections-wrapper"  
+      :class="getThemeClass"
+      >
         <div class="flama-wrapper">
           <Flama />
         </div>
-        <div class="tool-sections" v-if="contentData.dailyAiTool" :class="getThemeClass">
+        <div
+          class="tool-sections"
+          v-if="contentData.dailyAiTool"
+         >
           <ToolSection :modelValue="contentData.dailyAiTool" />
         </div>
-        <div class="tool-sections" v-else><h3 style="color:black">No AI tool suggestion today:(</h3></div>
-        
-        <div class="tool-sections" v-if="contentData.dailyAiImage" :class="getThemeClass">
+        <div class="tool-sections" v-else>
+          <h3 style="color: black">
+            No AI tool suggestion today
+            <a style="color: black" href="mailto:contact@enginkaratas.com"
+              >contact</a
+            >
+          </h3>
+        </div>
+
+        <div class="tool-sections" v-if="contentData.dailyAiImage">
           <ToolSection :dailyAiImage="contentData.dailyAiImage" />
         </div>
-        <div class="tool-sections" v-else><h3 style="color:black">No AI tool suggestion today:(</h3></div>
+        <div class="tool-sections" v-else>
+          <h3 style="color: black">No AI tool suggestion today:(</h3>
+        </div>
       </div>
       <div class="footer">
         <a target="_blank" href="http://www.enginkaratas.com"
@@ -55,7 +68,6 @@
         >
       </div>
     </div>
-  </Transition>
 </template>
 
 <script setup>
@@ -249,6 +261,7 @@ const getDailyAiImage = async () => {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    background-color: #a1bbca;
     .flama-wrapper {
       display: flex;
       justify-content: right;
@@ -261,6 +274,7 @@ const getDailyAiImage = async () => {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     display: flex;
+    background-color: #a1bbca;
     flex-direction: column;
     justify-content: center;
     align-items: center;
