@@ -10,7 +10,7 @@
       </div>
       <div class="header">
         <h1>SADAI</h1>
-        <p class="entranceSentence">Silence`s AI companion</p>
+        <p class="entranceSentence">Silence`s AIasdasd companion</p>
         <div class="theme-switcher">
           <theme-switcher @getColorScheme="setColorScheme"></theme-switcher>
         </div>
@@ -41,12 +41,12 @@
           <Flama />
         </div>
         <div
-          class="tool-sections"
+          class="tool-sections" :class="getThemeClass"
           v-if="contentData.dailyAiTool"
          >
           <ToolSection :modelValue="contentData.dailyAiTool" />
         </div>
-        <div class="tool-sections" v-else>
+        <div class="tool-sections" v-else :class="getThemeClass" >
           <h3 style="color: black">
             No AI tool suggestion today
             <a style="color: black" href="mailto:contact@enginkaratas.com"
@@ -55,14 +55,14 @@
           </h3>
         </div>
 
-        <div class="tool-sections" v-if="contentData.dailyAiImage">
+        <div class="tool-sections" v-if="contentData.dailyAiImage" :class="getThemeClass">
           <ToolSection :dailyAiImage="contentData.dailyAiImage" />
         </div>
-        <div class="tool-sections" v-else>
+        <div class="tool-sections" v-else :class="getThemeClass">
           <h3 style="color: black">No AI tool suggestion today:(</h3>
         </div>
       </div>
-      <div class="footer">
+      <div class="footer" :class="getThemeClass">
         <a target="_blank" href="http://www.enginkaratas.com"
           >www.enginkaratas.com</a
         >
@@ -92,7 +92,7 @@ onMounted(() => {
   loadingTodayAiToolSection = true;
   loadingTodayImageSection = true;
   getDailyAiTool();
-  getDailyAiImage();
+  getDailyAiImage(); 
 });
 const getThemeClass = computed(() => {
   return themeColor.value == "dark" ? "dark" : "light";
@@ -282,25 +282,30 @@ const getDailyAiImage = async () => {
   }
 
   .tool-sections.dark {
-    background-color: #8ba2a2;
+    background-color: #abbbbb;
   }
 
   .tool-sections.light {
     background-color: #d3e5e5;
   }
   .footer {
-    margin: -20px;
-    padding: 1em;
-    padding-top: 1em;
     display: flex;
     justify-content: center;
     font-size: 1em;
     opacity: 0.8;
     a {
-      color: #000000;
+      color: #393939;
     }
   }
 }
+.footer.dark{
+  background-color: #abbbbb;
+}
+.footer.light{
+  background-color: #d3e5e5;
+  
+}
+
 #app .dark {
   background-color: #000000;
 }

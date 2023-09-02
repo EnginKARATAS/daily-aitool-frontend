@@ -9,7 +9,6 @@
     "48": "images/icon-48.png",
     "128": "images/icon-128.png"
   },
-  "host_permissions": ["https://*.amazonaws.com/*"],
   "permissions": ["storage", "tabs"],
   "action": {
     "default_popup": "index.html"
@@ -22,8 +21,7 @@
       "js": ["assets/index.js"],
       "css": ["assets/index.css"],
       "matches": [
-        "https://developer.chrome.com/docs/extensions/*",
-        "https://developer.chrome.com/docs/webstore/*"
+        "https://*.amazonaws.com/*"
       ]
     }
   ]
