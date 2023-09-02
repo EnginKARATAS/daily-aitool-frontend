@@ -14,7 +14,7 @@
         <font-awesome-icon icon="fa-solid fa-moon" />
       </i>
       <span class="ball"></span>
-    </label>
+    </label> 
   </div>
 </template>
 
