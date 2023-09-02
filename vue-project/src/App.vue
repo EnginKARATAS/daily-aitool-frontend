@@ -291,6 +291,7 @@ const getDailyAiImage = async () => {
   .footer {
     margin: -20px;
     padding: 1em;
+    padding-top: 1em;
     display: flex;
     justify-content: center;
     font-size: 1em;
