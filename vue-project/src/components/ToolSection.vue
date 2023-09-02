@@ -24,7 +24,7 @@
   <div class="card" v-if="dailyAiImage">
     <h1>Today`s Beautiful AI Image</h1>
     <p class="image-section-p">SadAI thought result entire day!</p>
-    <img :src="dailyAiImage" alt="" />
+    <img :src="dailyAiImage" alt="There is no suggested image today. I can`t thinking. Am I broken? Wanna image? contact@enginkaratas.com" />
 
     <div class="thinking-section">
       <dot-loader
