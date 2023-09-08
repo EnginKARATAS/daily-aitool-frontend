@@ -33,7 +33,7 @@
         </div>
         <h3>AI TOOL DAILY</h3>
       </div>
-
+  
       <div class="tool-sections-wrapper"  
       :class="getThemeClass"
       >
