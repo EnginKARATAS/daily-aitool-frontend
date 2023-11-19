@@ -44,10 +44,7 @@ let dailyAiModel = {
         <br />
         <h2>{{ dailyAiModel.aiName }} Trailer</h2>
         <div class="iframe-youtube">
-          <iframe
-            :src="dailyAiModel.videoIframeAdress"
-            frameborder="0"
-          ></iframe>
+          <h3><a :href="dailyAiModel.videoIframeAdress">Go to AI Youtube Channel</a></h3>
         </div>
         <div class="iframe-tiktok"></div>
       </div>
