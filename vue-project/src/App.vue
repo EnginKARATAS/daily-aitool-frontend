@@ -10,7 +10,7 @@
       </div>
       <div class="header">
         <h1>SADAI</h1>
-        <p class="entranceSentence">Silence`s AIasdasd companion</p>
+        <p class="entranceSentence">Silence`s AI companion</p>
         <div class="theme-switcher">
           <theme-switcher @getColorScheme="setColorScheme"></theme-switcher>
         </div>
