@@ -1,73 +1,76 @@
 <template>
-    <div id="app" :class="getThemeClass">
-      <div class="brainImageWrapper">
-        <div class="right">
-          <img src="./assets/brain256.png" width="300" alt="brain" />
-        </div>
-        <div class="left">
-          <img src="./assets/brain256.png" width="300" alt="brain" />
-        </div>
+  <div id="app" :class="getThemeClass">
+    <div class="brainImageWrapper">
+      <div class="right">
+        <img src="./assets/brain256.png" width="300" alt="brain" />
       </div>
-      <div class="header">
-        <h1>SADAI</h1>
-        <p class="entranceSentence">Silence`s AI companion</p>
-        <div class="theme-switcher">
-          <theme-switcher @getColorScheme="setColorScheme"></theme-switcher>
-        </div>
-        <div
-          class="imageWrapper"
-          @mouseover="sadaiImagePopupShow"
-          @mouseleave="sadaiImagePopupClose"
-        >
-          <dot-loader
-            v-if="changePopupState"
-            class="logoSpinner"
-            :loading="loadingTodayAiToolSection && loadingTodayImageSection"
-            :color="logoSpinnerColor"
-            :size="logoSpinnerSize"
-          ></dot-loader>
-          <div class="imgOverlay" v-if="changePopupState">
-            <p>{{ getTodaySadMessage() }}</p>
-          </div>
-          <img src="./assets/appLogo.png" alt="" />
-        </div>
-        <h3>AI TOOL DAILY</h3>
-      </div>
-  
-      <div class="tool-sections-wrapper"  
-      :class="getThemeClass"
-      >
-        <div class="flama-wrapper">
-          <Flama />
-        </div>
-        <div
-          class="tool-sections" :class="getThemeClass"
-          v-if="contentData.dailyAiTool"
-         >
-          <ToolSection :modelValue="contentData.dailyAiTool" />
-        </div>
-        <div class="tool-sections" v-else :class="getThemeClass" >
-          <h3 style="color: black">
-            No AI tool suggestion today
-            <a style="color: black" href="mailto:contact@enginkaratas.com"
-              >contact</a
-            >
-          </h3>
-        </div>
-
-        <div class="tool-sections" v-if="contentData.dailyAiImage" :class="getThemeClass">
-          <ToolSection :dailyAiImage="contentData.dailyAiImage" />
-        </div>
-        <div class="tool-sections" v-else :class="getThemeClass">
-          <h3 style="color: black">No AI tool suggestion today:(</h3>
-        </div>
-      </div>
-      <div class="footer" :class="getThemeClass">
-        <a target="_blank" href="http://www.enginkaratas.com"
-          >www.enginkaratas.com</a
-        >
+      <div class="left">
+        <img src="./assets/brain256.png" width="300" alt="brain" />
       </div>
     </div>
+    <div class="header">
+      <h1>SADAI</h1>
+      <p class="entranceSentence">Silence`s AI companion</p>
+      <div class="theme-switcher">
+        <theme-switcher @getColorScheme="setColorScheme"></theme-switcher>
+      </div>
+      <div
+        class="imageWrapper"
+        @mouseover="sadaiImagePopupShow"
+        @mouseleave="sadaiImagePopupClose"
+      >
+        <dot-loader
+          v-if="changePopupState"
+          class="logoSpinner"
+          :loading="loadingTodayAiToolSection && loadingTodayImageSection"
+          :color="logoSpinnerColor"
+          :size="logoSpinnerSize"
+        ></dot-loader>
+        <div class="imgOverlay" v-if="changePopupState">
+          <p>{{ getTodaySadMessage() }}</p>
+        </div>
+        <img src="./assets/appLogo.png" alt="" />
+      </div>
+      <h3>AI TOOL DAILY</h3>
+    </div>
+
+    <div class="tool-sections-wrapper" :class="getThemeClass">
+      <div class="flama-wrapper">
+        <Flama />
+      </div>
+      <div
+        class="tool-sections"
+        :class="getThemeClass"
+        v-if="contentData.dailyAiTool"
+      >
+        <ToolSection :modelValue="contentData.dailyAiTool" />
+      </div>
+      <div class="tool-sections" v-else :class="getThemeClass">
+        <h3 style="color: black">
+          No AI tool suggestion today
+          <a style="color: black" href="mailto:contact@enginkaratas.com"
+            >contact</a
+          >
+        </h3>
+      </div>
+
+      <div
+        class="tool-sections"
+        v-if="contentData.dailyAiImage"
+        :class="getThemeClass"
+      >
+        <ToolSection :dailyAiImage="contentData.dailyAiImage" />
+      </div>
+      <div class="tool-sections" v-else :class="getThemeClass">
+        <h3 style="color: black">No AI tool suggestion today:(</h3>
+      </div>
+    </div>
+    <div class="footer" :class="getThemeClass">
+      <a target="_blank" href="http://www.enginkaratas.com"
+        >www.enginkaratas.com</a
+      >
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -92,7 +95,7 @@ onMounted(() => {
   loadingTodayAiToolSection = true;
   loadingTodayImageSection = true;
   getDailyAiTool();
-  getDailyAiImage(); 
+  getDailyAiImage();
 });
 const getThemeClass = computed(() => {
   return themeColor.value == "dark" ? "dark" : "light";
@@ -298,12 +301,11 @@ const getDailyAiImage = async () => {
     }
   }
 }
-.footer.dark{
+.footer.dark {
   background-color: #abbbbb;
 }
-.footer.light{
+.footer.light {
   background-color: #d3e5e5;
-  
 }
 
 #app .dark {
