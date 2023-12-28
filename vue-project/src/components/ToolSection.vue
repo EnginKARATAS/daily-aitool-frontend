@@ -1,6 +1,6 @@
 <template>
   <div class="card" v-if="modelValue">
-    <h1>{{ modelValue.aiName }} sa</h1>
+    <h1>{{ modelValue.aiName }}</h1>
     <div class="image">
       <a target="_blank" :href="modelValue.aiWebsite">
         <img
@@ -11,15 +11,19 @@
         />
       </a>
     </div>
- 
+
     <p>{{ modelValue.description }}</p>
     <a target="_blank" :href="modelValue.aiWebsite">
-      <button>Visit</button>
+      <button class="pink-button">Visit</button>
     </a>
-    <h1>{{ modelValue.aiName }} Trailer</h1>
-    <div class="iframe-youtube">
-      <iframe :src="modelValue.videoIframeAdress" frameborder="0"></iframe>
+    <div v-if="!modelValue.videoIframeAdress.includes('Not Available')" class="w-100percent">
+      <h1>{{ modelValue.aiName }} Trailer</h1>
+      <p>Click to link below and go to the trailer video</p>
+      <a target="_blank" :href="modelValue.aiWebsite">
+        <button class="pink-button">Go to youtube trailer video</button>
+      </a>
     </div>
+ 
   </div>
   <div class="card" v-if="dailyAiImage">
     <h1>Today`s Beautiful AI Image</h1>
@@ -105,10 +109,10 @@ const props = defineProps({
     }
   }
 
-  a {
+  a ,.w-100percent{
     width: 100%;
   }
-  a button {
+  .pink-button {
     color: black;
     background-color: #f1c4ed;
     width: 100%;
