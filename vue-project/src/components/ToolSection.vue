@@ -2,24 +2,31 @@
   <div class="card" v-if="modelValue">
     <div class="image">
       <div>
-        <a style="text-decoration: none;" :href="modelValue.aiWebsite"
-          ><h2>{{ modelValue.aiName }}</h2></a
+        <a
+          target="_blank"
+          style="text-decoration: none"
+          :href="modelValue.aiWebsite"
+          ><h1 class="pink-color">{{ modelValue.aiName }}</h1></a
         >
       </div>
     </div>
-    <p>{{ modelValue.description }}</p>
+    <p class="text-center">{{ modelValue.description }}</p>
     <a target="_blank" :href="modelValue.aiWebsite">
       <button class="pink-button">Visit</button>
     </a>
     <div
       v-if="!modelValue.videoIframeAdress.includes('Not Available')"
-      class="w-100percent"
+      style="width: 100%"
     >
-      <h1>{{ modelValue.aiName }} Trailer</h1>
-      <p>Click to link below and go to the trailer video</p>
-      <a target="_blank" :href="modelValue.aiWebsite">
-        <button class="pink-button">Go to youtube trailer video</button>
-      </a>
+      <div class="trailer-section">
+        <div>
+          <h1 class="pink-color text-center">{{ modelValue.aiName }} Trailer</h1>
+          <p class="text-center">Click to link below and go to the trailer video</p>
+          <a target="_blank" :href="modelValue.aiWebsite">
+            <button class="pink-button">Go to youtube trailer video</button>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
   <div class="card" v-if="dailyAiImage">
@@ -67,6 +74,12 @@ const props = defineProps({
   position: relative;
   color: black;
   margin-bottom: 2.3em;
+  .text-center {
+    text-align: center;
+  }
+  .pink-color {
+    color: #f0b3ec;
+  }
   .image-section-p {
     position: relative;
     font-size: 1.5em;
@@ -93,6 +106,13 @@ const props = defineProps({
       width: 100%;
       height: 100%;
     }
+  }
+  .trailer-section {
+    align-items: center;
+    justify-content: center;
+    //shadow
+    width: 100%;
+    height: 100%;
   }
   .iframe-youtube {
     padding-top: 1em;
