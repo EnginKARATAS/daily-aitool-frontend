@@ -11,6 +11,7 @@ const randomStrings = [];
 for (let i = 0; i < files.length; i++) {
   randomStrings.push(randomString(randomStringOptions));
 }
+fs.writeFileSync('randomStrings.json', JSON.stringify(randomStrings));
 
 //change file names
 for (let i = 0; i < files.length; i++) {

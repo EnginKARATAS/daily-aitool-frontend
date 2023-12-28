@@ -12,6 +12,7 @@ function getJsonSync(filePath) {
   throw new Error("No file system found");
 }
 var datas = getJsonSync("./data.json");
+var randomFileNameStringArr = getJsonSync("./randomStrings.json");
 
 function removeQueryString(url) {
   // Check if the URL contains a "?"
@@ -90,7 +91,7 @@ let mappedAr = datas
       aiName: item.toolName,
       aiWebsite: removeQueryString(item.websiteUrl),
       description: item.toolShortDescription,
-      imagePath: item.mainImage.asset._ref,
+      imagePath: randomFileNameStringArr[i] + ".jpg",
       videoIframeAdress: "Video is not available",
     };
   })

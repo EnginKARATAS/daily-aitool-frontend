@@ -1,6 +1,6 @@
 <template>
   <div class="card" v-if="modelValue">
-    <h1>{{ modelValue.aiName }}</h1>
+    <h1>{{ modelValue.aiName }} sa</h1>
     <div class="image">
       <a target="_blank" :href="modelValue.aiWebsite">
         <img
@@ -11,7 +11,7 @@
         />
       </a>
     </div>
-
+ 
     <p>{{ modelValue.description }}</p>
     <a target="_blank" :href="modelValue.aiWebsite">
       <button>Visit</button>
