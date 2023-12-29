@@ -12,7 +12,7 @@
       <h1>SADAI</h1>
       <p class="entranceSentence">Silence`s AI companion</p>
       <div class="theme-switcher">
-        <theme-switcher @getColorScheme="setColorScheme"></theme-switcher>
+        <theme-switcher @getColorScheme="setColorSchemeToggler"></theme-switcher>
       </div>
       <div
         class="imageWrapper"
@@ -100,7 +100,8 @@ onMounted(() => {
 const getThemeClass = computed(() => {
   return themeColor.value == "dark" ? "dark" : "light";
 });
-const setColorScheme = (colorScheme) => {
+const setColorSchemeToggler = (colorScheme) => {
+  console.log("🚀 ~ file: App.vue:104 ~ setColorSchemeToggler ~ colorScheme:", colorScheme)
   themeColor.value = colorScheme;
 };
 
@@ -157,6 +158,11 @@ const getDailyAiTool = async () => {
     .get("https://wqvjsawt4m.execute-api.eu-north-1.amazonaws.com/getAi")
     .then((fetched) => {
       contentData.dailyAiTool = fetched.data[0];
+      contentData.dailyAiTool.videoIframeAdress =
+        contentData.dailyAiTool.videoIframeAdress.replace(
+          "watch?v=",
+          "embed/"
+        );
       loadingTodayAiToolSection = false;
     })
     .catch((error) => {

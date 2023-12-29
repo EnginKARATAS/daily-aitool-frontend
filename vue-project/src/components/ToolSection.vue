@@ -6,7 +6,7 @@
           target="_blank"
           style="text-decoration: none"
           :href="modelValue.aiWebsite"
-          ><h1 class="pink-color">{{ modelValue.aiName }}</h1></a
+          ><h1 class="black-color">{{ modelValue.aiName }}</h1></a
         >
       </div>
     </div>
@@ -20,7 +20,8 @@
     >
       <div class="trailer-section">
         <div>
-          <h1 class="pink-color text-center">{{ modelValue.aiName }} Trailer</h1>
+          <h1 class="black-color text-center">{{ modelValue.aiName }} Trailer</h1>
+          <iframe width="560" height="315" :src="modelValue.videoIframeAdress" frameborder="0" allowfullscreen></iframe>
           <p class="text-center">Click to link below and go to the trailer video</p>
           <a target="_blank" :href="modelValue.aiWebsite">
             <button class="pink-button">Go to youtube trailer video</button>
@@ -77,8 +78,8 @@ const props = defineProps({
   .text-center {
     text-align: center;
   }
-  .pink-color {
-    color: #f0b3ec;
+  .black-color {
+    color: #000000;
   }
   .image-section-p {
     position: relative;

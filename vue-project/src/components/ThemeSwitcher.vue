@@ -2,6 +2,7 @@
   <div class="switcher" :class="getThemeClass">
     <input
       @click="switchColorScheme()"
+      :checked="!isThemeLight"
       type="checkbox"
       class="checkbox"
       id="checkbox"
@@ -14,44 +15,46 @@
         <font-awesome-icon icon="fa-solid fa-moon" />
       </i>
       <span class="ball"></span>
-    </label> 
+    </label>
   </div>
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from "vue";
-let emit = defineEmits("getColorScheme");
-var isThemeLight = ref(true);
-const getThemeClass = computed(() => {
-  return isThemeLight.value == true ? "dark" : "light";
+import { computed, defineEmits, ref, watch, onMounted } from "vue";
+
+const emit = defineEmits("getColorScheme");
+const isThemeLight = ref(true);
+
+onMounted(() => {
+  console.log("çalıştı");
+  chrome.storage.local.get("theme", (result) => {
+    isThemeLight.value = result.theme === "light";
+  });
 });
-// onMounted(() => {
-//   isThemeLight.value = colorScheme == "dark" ? false : true;
-//   colorScheme = isThemeLight.value == true ? "light" : "dark";
-//   emit("getColorScheme", colorScheme);
-// });
 
-let switchColorScheme = () => {
-  isThemeLight.value = !isThemeLight.value;
-  let colorScheme = isThemeLight.value == true ? "light" : "dark";
-  colorScheme = isThemeLight.value == true ? "light" : "dark";
-  emit("getColorScheme", colorScheme);
-};
+watch(isThemeLight, async (newValue) => {
+  const newTheme = newValue ? "light" : "dark";
+  await chrome.storage.local.set({ theme: newTheme });
+  emit("getColorScheme", isThemeLight.value ? "light" : "dark");
+});
 
-// let modifyChecked = computed(() => {
-//   return isThemeLight.value == "dark" ? true : false;
-// });
-
-let getOSColorScheme = () => {
-  if (window.matchMedia) {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return "dark";
-    } else {
-      return "light";
-    }
+chrome.storage.onChanged.addListener((changes) => {
+  if (changes.theme) {
+    isThemeLight.value = changes.theme.newValue === "light";
   }
+});
+
+const getThemeClass = computed(() => {
+  return isThemeLight.value ? "dark" : "light";
+});
+
+const switchColorScheme = () => {
+  isThemeLight.value = !isThemeLight.value;
+  chrome.storage.local.get("theme", (result) => {
+  });
 };
 </script>
+
 <style>
 .checkbox {
   opacity: 0;

@@ -16,14 +16,5 @@ function installNotice() {
   });
 }
 
-themeColorSwitcher();
-function themeColorSwitcher() {
-  chrome.storage.local.get("theme", ({ theme }) => {
-    if (theme == "dark") {
-      chrome.storage.local.set({ theme: "light" });
-    }
-    else {
-      chrome.storage.local.set({ theme: "dark" });
-    }
-  });
-}
+ 
+
