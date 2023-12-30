@@ -15,7 +15,7 @@
       <button class="pink-button">Visit</button>
     </a>
     <div
-      v-if="!modelValue.videoIframeAdress.includes('Not Available')"
+      v-if="!modelValue.videoIframeAdress.includes('not available')"
       style="width: 100%"
     >
       <div class="trailer-section">

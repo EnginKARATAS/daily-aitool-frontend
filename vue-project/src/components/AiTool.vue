@@ -34,7 +34,7 @@ let dailyAiModel = {
          <h3><a :href="dailyAiModel.aiWebsite"></a>dailyAiModel.aiWebsite</h3>
         <br />
         <h2>{{ dailyAiModel.aiName }} Trailer</h2>
-        <div class="iframe-youtube">
+        <div v-if="!dailyAiModel.videoIframeAdress.includes("Not Available")" class="iframe-youtube">
           <iframe
             :src="dailyAiModel.videoIframeAdress"
             frameborder="0"

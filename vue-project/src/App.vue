@@ -77,7 +77,7 @@
 import ToolSection from "./components/toolsection.vue";
 import { computed, defineComponent, onMounted, reactive, ref } from "vue";
 import axios from "axios";
-import Flama from "./components/Flama.vue";
+import Flama from "./components/flama.vue";
 import DotLoader from "vue-spinner/src/DotLoader.vue";
 import ThemeSwitcher from "./components/ThemeSwitcher.vue";
 
@@ -101,7 +101,6 @@ const getThemeClass = computed(() => {
   return themeColor.value == "dark" ? "dark" : "light";
 });
 const setColorSchemeToggler = (colorScheme) => {
-  console.log("🚀 ~ file: App.vue:104 ~ setColorSchemeToggler ~ colorScheme:", colorScheme)
   themeColor.value = colorScheme;
 };
 
@@ -166,6 +165,7 @@ const getDailyAiTool = async () => {
       loadingTodayAiToolSection = false;
     })
     .catch((error) => {
+      console.log(error);
       loadingTodayAiToolSection = false;
     });
   loadingTodayAiToolSection = true;
