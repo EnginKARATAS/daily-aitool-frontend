@@ -10,7 +10,7 @@ const client = new DynamoDBClient({});
 
 const dynamo = DynamoDBDocumentClient.from(client);
 
-const tableName = "XXX";
+const tableName = "mockTable";
  
 //create a string to get today date like  23.8.2023 format
 const todayDate = new Date();
@@ -25,31 +25,31 @@ export const handler = async (event, context) => {
 
   try {
     switch (event.routeKey) {
-      case "GET /XXX":
+      case "GET /mockTable":
           body = await dynamo.send(
-          new ScanCommand({XXX: XXX,
-          FilterExpression : "contains(#XXX, :XXX)",
-          ExpressionAttributeNames: { "#XXX": "XXX" },
+          new ScanCommand({mockTable: mockTable,
+          FilterExpression : "contains(#mockTable, :mockTable)",
+          ExpressionAttributeNames: { "#mockTable": "mockTable" },
           ExpressionAttributeValues: {
-            ':XXX': formattedTodayDate
+            ':mockTable': formattedTodayDate
             } 
           })
         );
         body = body.Items;
         break;
-      case "POST /XXX":
+      case "POST /mockTable":
         let requestJSON = JSON.parse(event.body);
         const putPromises = requestJSON.map(async (item)=>{
         const params = {
             TableName: tableName,
             Item: {
               id:  +item.id,
-              xxx: item.xxx,
-              xxx: item.xxx,
-              xxx: item.xxx,
-              xxx: item.xxx,
-              xxx: item.xxx,
-              xxx: item.xxx
+              mockTable: item.mockTable,
+              mockTable: item.mockTable,
+              mockTable: item.mockTable,
+              mockTable: item.mockTable,
+              mockTable: item.mockTable,
+              mockTable: item.mockTable
             }
           }
         

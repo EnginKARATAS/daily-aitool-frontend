@@ -26,7 +26,6 @@ const emit = defineEmits("getColorScheme");
 const isThemeLight = ref(true);
 
 onMounted(() => {
-  console.log("çalıştı");
   chrome.storage.local.get("theme", (result) => {
     isThemeLight.value = result.theme === "light";
   });

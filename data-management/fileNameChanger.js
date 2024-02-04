@@ -16,4 +16,4 @@ fs.writeFileSync('randomStrings.json', JSON.stringify(randomStrings));
 //change file names
 for (let i = 0; i < files.length; i++) {
   fs.renameSync(directoryPath + '/' + files[i], directoryPath + '/' + randomStrings[i] + '.jpg');
-}W
+}
